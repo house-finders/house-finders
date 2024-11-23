@@ -20,8 +20,18 @@ const AdminPage = async () => {
       <Container id="list" fluid className="py-3">
         <Row>
           <Col>
-            <h1 className="text-center">List Contact Admin</h1>
-            {users.map((user: User) => (
+            <h1 className="text-center">ADMIN</h1>
+            {users.filter((user: User) => user.role === 'ADMIN').map((user: User) => (
+              <Col key={user.id + user.role}>
+                <ContactCardAdmin user={user} />
+              </Col>
+            ))}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <h1 className="text-center">USERS</h1>
+            {users.filter((user: User) => user.role === 'USER').map((user: User) => (
               <Col key={user.id + user.role}>
                 <ContactCardAdmin user={user} />
               </Col>
